@@ -1,0 +1,87 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Stop - Watch</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <h1 class="display-3">Stop Timer</h1>
+            <p class="lead"><span id="hours">00</span><span class="semicolon">:</span> <span id="sec">00</span><span class="semicolon">:</span> <span id="min">00</span></p>
+            <hr class="my-2">
+            <p>More info</p>
+            <p class="lead">
+                <button class="btn btn-primary btn-lg" id="start" href="Jumbo action link" role="button">Start Timer</button>
+                <button class="btn btn-primary btn-lg" id="stop" href="Jumbo action link" role="button">Stop Timer</button>
+
+            </p>
+        </div>
+    </div>
+    <script >
+        window.onload = function () {
+            let tens = 00,seconds = 00,hours = 00;
+            let buttonStart = document.getElementById("start");
+            let buttonStop = document.getElementById("stop");
+            let hour = document.getElementById("hours");
+            let min = document.getElementById("min");
+            let sec = document.getElementById("sec");
+            var Interval;
+            
+            buttonStart.onclick = function() {
+                clearInterval(Interval);
+                Interval = setInterval(startTimer,10)
+            }
+
+            buttonStop.onclick = function() {
+                clearInterval(Interval);
+                
+            }
+
+        function startTimer () {
+            tens++; 
+            
+            if(tens <= 9){
+                min.innerHTML = "0" + tens;
+            }
+            
+            if (tens > 9){
+                min.innerHTML = tens;
+            
+            } 
+
+            if (tens > 99) {
+                console.log("seconds");
+                seconds++;
+                
+                tens = 0;
+                min.innerHTML = "0" + 0;
+            }
+            if (seconds <= 9){
+                sec.innerHTML = "0" + seconds;
+                sec.style.color = "green";
+            }else{
+                sec.innerHTML = seconds;
+                sec.style.color = "Red";
+            }
+
+            if (seconds > 59) {
+                hours++;
+                if(hours <= 9){
+                    hour.innerHTML = "0" + hours;
+                }else{
+                    hour.innerHTML = hours;
+                }
+                seconds = 0;
+            }
+        
+    
+        
+        }
+  
+    }
+    </script>
+</body>
+</html>
